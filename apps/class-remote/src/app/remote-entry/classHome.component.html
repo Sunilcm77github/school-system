@@ -1,0 +1,25 @@
+<div class="p-3">
+  <h1 class="text-emerald-800 mb-2 text-xl font-semibold text-center">
+    Class Manager
+  </h1>
+  <div class="flex justify-between grid-cols-2 mb-2">
+    <div class="w-[80%]">
+      <lib-class-smart-filter></lib-class-smart-filter>
+    </div>
+    <div>
+      <!-- <a
+        class="px-3 py-2 rounded-md border border-emerald-800 hover:bg-emerald-800 hover:text-white"
+        href=""
+        routerLink="classentry"
+      >
+        + Add New</a
+      > -->
+      <button (click)="onNewButtonClick()"
+        class="px-3 py-2 rounded-md border border-emerald-800 hover:bg-emerald-800 hover:text-white"
+      >
+      + Add New
+      </button>
+    </div>
+  </div>
+  <lib-class-grid></lib-class-grid>
+</div>

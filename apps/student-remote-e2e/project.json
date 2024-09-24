@@ -1,0 +1,10 @@
+{
+  "name": "student-remote-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/student-remote-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["student-remote"],
+  "// targets": "to see all targets run: nx show project student-remote-e2e --web",
+  "targets": {}
+}

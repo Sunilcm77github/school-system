@@ -14,7 +14,32 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@kousik-workspace/admission-core": ["libs/admission-core/src/index.ts"],
+      "@kousik-workspace/class-core": ["libs/class-core/src/index.ts"],
+      "@kousik-workspace/class-entry-form": [
+        "libs/class-core/src/lib/class-entry-form/src/index.ts"
+      ],
+      "@kousik-workspace/lecturer-core": ["libs/lecturer-core/src/index.ts"],
+      "@kousik-workspace/student-core": ["libs/student-core/src/index.ts"],
+      "@kousik-workspace/subject-core": ["libs/subject-core/src/index.ts"],
+      "admission-remote/Routes": [
+        "apps/admission-remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "class-remote/Routes": [
+        "apps/class-remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "lecturer-remote/Routes": [
+        "apps/lecturer-remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "student-remote/Routes": [
+        "apps/student-remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "subject-remote/Routes": [
+        "apps/subject-remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "testing/Routes": ["apps/testing/src/app/remote-entry/entry.routes.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

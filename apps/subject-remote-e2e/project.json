@@ -1,0 +1,10 @@
+{
+  "name": "subject-remote-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/subject-remote-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["subject-remote"],
+  "// targets": "to see all targets run: nx show project subject-remote-e2e --web",
+  "targets": {}
+}

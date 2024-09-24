@@ -1,0 +1,135 @@
+<div class="p-5">
+  <h1 class="font-semibold text-xl mb-4">New Class Entry</h1>
+  <form
+    [formGroup]="classForm"
+    (ngSubmit)="onSubmit()"
+    class="space-y-5 border border-stone-400 p-3 rounded-md shadow-sm"
+  >
+    <div class="flex flex-row gap-x-4">
+      <!-- Class Input -->
+      <div class="w-1/2">
+        <label for="class" class="block text-sm font-medium text-gray-700"
+          >Class:</label
+        >
+        <input
+          id="class"
+          formControlName="class"
+          placeholder="enter class name"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm"
+        />
+        <div
+          *ngIf="
+            classForm.get('class')?.touched && classForm.get('class')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="classForm.get('class')?.errors?.['required']"
+            >Class is required.</small
+          >
+          <small *ngIf="classForm.get('class')?.errors?.['pattern']"
+            >Class should be a number.</small
+          >
+        </div>
+      </div>
+
+      <!-- Section Input -->
+      <div class="w-1/2">
+        <label for="section" class="block text-sm font-medium text-gray-700"
+          >Section:</label
+        >
+        <input
+          id="section"
+          formControlName="section"
+          placeholder="enter section name"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm"
+        />
+        <div
+          *ngIf="
+            classForm.get('section')?.touched &&
+            classForm.get('section')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="classForm.get('section')?.errors?.['required']"
+            >Section is required.</small
+          >
+          <small *ngIf="classForm.get('section')?.errors?.['maxlength']"
+            >Section should be two letter.</small
+          >
+        </div>
+      </div>
+    </div>
+    <!-- Class Teacher Input -->
+    <div>
+      <label for="classTeacher" class="block text-sm font-medium text-gray-700"
+        >Class Teacher:</label
+      >
+      <input
+        id="classTeacher"
+        formControlName="classTeacher"
+        placeholder="enter teacher name"
+        class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm"
+      />
+      <div
+        *ngIf="
+          classForm.get('classTeacher')?.touched &&
+          classForm.get('classTeacher')?.invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="classForm.get('classTeacher')?.errors?.['required']"
+          >Class teacher is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- Subjects Input -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Subjects:</label>
+      <div
+        *ngFor="let subject of subjects.controls; let i = index"
+        class="mt-1"
+      >
+        <select
+          [formControlName]="i"
+          aria-placeholder="select subject"
+          class="px-3 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm"
+        >
+          <option value="" disabled selected>Select a subject</option>
+          <option
+            *ngFor="let availableSubject of availableSubjects"
+            [value]="availableSubject"
+          >
+            {{ availableSubject }}
+          </option>
+        </select>
+
+        <div
+          *ngIf="subject?.touched && subject?.invalid"
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="subject?.errors?.['required']"
+            >Subject is required.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="space-x-4 flex justify-center">
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-opacity-50"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
