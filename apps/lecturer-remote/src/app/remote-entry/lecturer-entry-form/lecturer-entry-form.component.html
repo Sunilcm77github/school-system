@@ -1,0 +1,216 @@
+<div class="p-3">
+  <h1 class="font-semibold text-xl mb-4">New Lecturer Entry</h1>
+  <form
+    [formGroup]="lecturerForm"
+    (ngSubmit)="onSubmit()"
+    class="space-y-5 border border-stone-400 p-3 rounded-md shadow-sm"
+  >
+    <div class="flex flex-row space-x-5">
+      <!-- Name Input -->
+      <div class="w-1/2">
+        <label for="name" class="block text-sm font-medium text-gray-700"
+          >Name:</label
+        >
+        <input
+          id="name"
+          formControlName="name"
+          placeholder="enter lecturer name"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+        <div
+          *ngIf="
+            lecturerForm.get('name')?.touched &&
+            lecturerForm.get('name')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="lecturerForm.get('name')?.errors?.['required']"
+            >Name is required.</small
+          >
+        </div>
+      </div>
+
+      <!-- Employee ID Input -->
+      <div class="w-1/2">
+        <label for="employeeId" class="block text-sm font-medium text-gray-700"
+          >Employee ID:</label
+        >
+        <input
+          id="employeeId"
+          formControlName="employeeId"
+          placeholder="enter employee ID"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+        <div
+          *ngIf="
+            lecturerForm.get('employeeId')?.touched &&
+            lecturerForm.get('employeeId')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="lecturerForm.get('employeeId')?.errors?.['required']"
+            >Employee ID is required.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-row space-x-5">
+      <!-- Contact Number Input -->
+      <div class="w-1/2">
+        <label
+          for="contactNumber"
+          class="block text-sm font-medium text-gray-700"
+          >Contact Number:</label
+        >
+        <input
+          id="contactNumber"
+          formControlName="contactNumber"
+          placeholder="enter contact number"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+        <div
+          *ngIf="
+            lecturerForm.get('contactNumber')?.touched &&
+            lecturerForm.get('contactNumber')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="lecturerForm.get('contactNumber')?.errors?.['required']"
+            >Contact number is required.</small
+          >
+        </div>
+      </div>
+
+      <!-- Email Input -->
+      <div class="w-1/2">
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email:</label
+        >
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder="example@email.com"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+        <div
+          *ngIf="
+            lecturerForm.get('email')?.touched &&
+            lecturerForm.get('email')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="lecturerForm.get('email')?.errors?.['required']"
+            >Email is required.</small
+          >
+          <small *ngIf="lecturerForm.get('email')?.errors?.['email']"
+            >Please enter a valid email.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-row space-x-5">
+      <!-- Subject Dropdown -->
+      <div class="w-1/2">
+        <label for="subject" class="block text-sm font-medium text-gray-700"
+          >Subject:</label
+        >
+        <select
+          id="subject"
+          formControlName="subject"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option value="" disabled selected>Select a subject</option>
+          <option *ngFor="let subject of availableSubjects" [value]="subject">
+            {{ subject }}
+          </option>
+        </select>
+        <div
+          *ngIf="
+            lecturerForm.get('subject')?.touched &&
+            lecturerForm.get('subject')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="lecturerForm.get('subject')?.errors?.['required']"
+            >Subject is required.</small
+          >
+        </div>
+      </div>
+
+      <!-- Department Dropdown -->
+      <div class="w-1/2">
+        <label for="department" class="block text-sm font-medium text-gray-700"
+          >Department:</label
+        >
+        <select
+          id="department"
+          formControlName="department"
+          class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option value="" disabled selected>Select a department</option>
+          <option
+            *ngFor="let department of availableDepartments"
+            [value]="department"
+          >
+            {{ department }}
+          </option>
+        </select>
+        <div
+          *ngIf="
+            lecturerForm.get('department')?.touched &&
+            lecturerForm.get('department')?.invalid
+          "
+          class="text-red-500 text-sm mt-1"
+        >
+          <small *ngIf="lecturerForm.get('department')?.errors?.['required']"
+            >Department is required.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Input -->
+    <div>
+      <label for="experience" class="block text-sm font-medium text-gray-700"
+        >Experience:</label
+      >
+      <input
+        id="experience"
+        formControlName="experience"
+        placeholder="mention experience"
+        class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      />
+      <div
+        *ngIf="
+          lecturerForm.get('experience')?.touched &&
+          lecturerForm.get('experience')?.invalid
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="lecturerForm.get('experience')?.errors?.['required']"
+          >Experience is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="space-x-5 flex justify-center">
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-opacity-50"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

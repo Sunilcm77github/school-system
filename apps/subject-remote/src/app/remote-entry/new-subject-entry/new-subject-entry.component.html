@@ -1,0 +1,133 @@
+<div class="p-3">
+    <h1 class="font-semibold text-xl mb-4">New Subject Entry</h1>
+    <form
+      [formGroup]="subjectForm"
+      (ngSubmit)="onSubmit()"
+      class="space-y-5 border border-stone-400 p-3 rounded-md shadow-sm"
+    >
+      <div class="flex flex-row space-x-5">
+        <!-- Subject Name Input -->
+        <div class="w-1/2">
+          <label for="subjectName" class="block text-sm font-medium text-gray-700">Subject Name:</label>
+          <input
+            id="subjectName"
+            formControlName="subjectName"
+            placeholder="enter subject name"
+            class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+          <div *ngIf="subjectForm.get('subjectName')?.touched && subjectForm.get('subjectName')?.invalid" class="text-red-500 text-sm mt-1">
+            <small *ngIf="subjectForm.get('subjectName')?.errors?.['required']">Subject name is required.</small>
+          </div>
+        </div>
+  
+        <!-- Subject Code Input -->
+        <div class="w-1/2">
+          <label for="subjectCode" class="block text-sm font-medium text-gray-700">Subject Code:</label>
+          <input
+            id="subjectCode"
+            formControlName="subjectCode"
+            placeholder="enter subject code"
+            class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+          <div *ngIf="subjectForm.get('subjectCode')?.touched && subjectForm.get('subjectCode')?.invalid" class="text-red-500 text-sm mt-1">
+            <small *ngIf="subjectForm.get('subjectCode')?.errors?.['required']">Subject code is required.</small>
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex flex-row space-x-5">
+        <!-- Teacher Input -->
+        <div class="w-1/2">
+          <label for="teacher" class="block text-sm font-medium text-gray-700">Teacher:</label>
+          <input
+            id="teacher"
+            formControlName="teacher"
+            placeholder="enter teacher's name"
+            class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+          <div *ngIf="subjectForm.get('teacher')?.touched && subjectForm.get('teacher')?.invalid" class="text-red-500 text-sm mt-1">
+            <small *ngIf="subjectForm.get('teacher')?.errors?.['required']">Teacher's name is required.</small>
+          </div>
+        </div>
+  
+        <!-- Max Marks Input -->
+        <div class="w-1/2">
+          <label for="maxMarks" class="block text-sm font-medium text-gray-700">Max Marks:</label>
+          <input
+            id="maxMarks"
+            formControlName="maxMarks"
+            type="number"
+            placeholder="enter maximum marks"
+            class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+          <div *ngIf="subjectForm.get('maxMarks')?.touched && subjectForm.get('maxMarks')?.invalid" class="text-red-500 text-sm mt-1">
+            <small *ngIf="subjectForm.get('maxMarks')?.errors?.['required']">Maximum marks are required.</small>
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex flex-row space-x-5">
+        <!-- Pass Marks Input -->
+        <div class="w-1/2">
+          <label for="passMarks" class="block text-sm font-medium text-gray-700">Pass Marks:</label>
+          <input
+            id="passMarks"
+            formControlName="passMarks"
+            type="number"
+            placeholder="enter pass marks"
+            class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+          <div *ngIf="subjectForm.get('passMarks')?.touched && subjectForm.get('passMarks')?.invalid" class="text-red-500 text-sm mt-1">
+            <small *ngIf="subjectForm.get('passMarks')?.errors?.['required']">Pass marks are required.</small>
+          </div>
+        </div>
+  
+        <!-- Class Dropdown -->
+        <div class="w-1/2">
+          <label for="class" class="block text-sm font-medium text-gray-700">Class:</label>
+          <select
+            id="class"
+            formControlName="class"
+            class="px-3 py-2 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          >
+            <option value="" disabled selected>Select a class</option>
+            <option *ngFor="let classItem of availableClasses" [value]="classItem">
+              {{ classItem }}
+            </option>
+          </select>
+          <div *ngIf="subjectForm.get('class')?.touched && subjectForm.get('class')?.invalid" class="text-red-500 text-sm mt-1">
+            <small *ngIf="subjectForm.get('class')?.errors?.['required']">Class is required.</small>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Elective Checkbox -->
+      <div>
+        <label for="elective" class="block text-sm font-medium text-gray-700">Elective Subject:</label>
+        <input
+          id="elective"
+          type="checkbox"
+          formControlName="elective"
+          class="mt-2"
+        />
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="space-x-5 flex justify-center">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-opacity-50"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,6 +1,13 @@
 import { Route } from '@angular/router';
-import { RemoteEntryComponent } from './entry.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
 
 export const remoteRoutes: Route[] = [
-  { path: '', component: RemoteEntryComponent },
+  { path: '', component: StudentHomeComponent },
+  {
+    path: 'studententry',
+    loadComponent: () =>
+      import(
+        '../remote-entry/new-student-entry/new-student-entry.component'
+      ).then((m) => m.NewStudentEntryComponent),
+  },
 ];
